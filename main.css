@@ -1,0 +1,284 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*
+****************************
+Оформление текста
+****************************
+*/
+@import url('https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+	font-family: "Arima", system-ui;
+	font-weight: lighter;
+}
+/*
+****************************
+Фоновая картинка
+****************************
+*/
+body {
+	background-image: url(img/background/creative-background-with-white-shapes.jpg);
+	min-height: 100%;
+	background-repeat: repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
+}
+/*
+****************************
+Пустой верхний блок
+****************************
+*/
+.empty {
+	height: 40px;
+}
+/*
+****************************
+Заголовок-логотип
+****************************
+*/
+h2 {
+	color: rgba(255, 255, 255, 0.819);
+	font-weight: 500;
+}
+
+.main-logo {
+	margin: 0px 20px 20px 20px;
+	padding: 20px ;
+	background:  rgba(0, 0, 0, 0.592);
+	border-radius: 7px;	
+	border: 0.5px solid #ffffff;
+	-webkit-box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2);
+	-moz-box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2);
+	box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2);
+}
+
+/*
+****************************
+Навигация шапка
+****************************
+*/
+
+#nav {
+	margin: 0px 20px 30px 20px;
+	border: 0.2px solid #ebebeb;
+	padding: 10px;
+	list-style-type: none;
+	border-radius: 7px;	
+	text-align: center;
+	background:  rgba(0, 0, 0, 0.592);
+}
+#nav li { 
+	display: inline;
+}
+#nav a {
+	color: #fff;
+	padding: 5px 10px;
+	text-decoration: none;
+	font-weight: 400;
+	display: inline;
+
+}
+#nav a:hover {
+	border-radius: 1px;
+	background-color: #ffffff5e;
+}
+nav {
+	-webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+	-moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+	box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+}
+
+/*
+****************************
+Календарь
+****************************
+*/
+.calendar {
+	width: 110px;
+    height: 200px;
+	margin: 0px 20px 20px 20px;
+	background:  rgba(0, 0, 0, 0.592);
+	border-radius: 8px;	
+	min-width: 10rem;
+	line-height: 1;
+	text-align: center;
+	background-color: #ffffffa2;
+	-webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+	-moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+	box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+}
+
+.calendar-header {
+	padding: 0.5rem 1rem;
+	color: #fff;
+	font-weight: bold;
+	font-size: 1.5rem;
+	line-height: 1.5;
+	background-color: rgba(0, 0, 0, 0.592);
+	border-top-left-radius: 0.5rem;
+	border-top-right-radius: 0.5rem;
+}
+
+.calendar-body {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	padding: 1rem;
+}
+
+.calendar-month {
+	text-transform: capitalize;
+}
+
+.calendar-weekday {
+	color: #9e9e9e;
+	font-size: 1.25rem;
+	text-transform: capitalize;
+}
+
+.calendar-day {
+font-weight: bold;
+font-size: 4rem;
+}
+
+.calendar-year {
+	color: #9e9e9e;
+	font-size: 1.25rem;
+}
+
+/*
+****************************
+Главный контейнер-1
+****************************
+*/
+.children {
+	background: rgba(200, 214, 204, 0.9); /* Цвет фона */
+    color: #000000; /* Цвет текста */
+    padding: 25px; /* Поля вокруг текста */
+	margin: 20px 20px 20px 20px;
+	padding: 20px 20px 20px 20px;
+	border: 0.2px solid #ebebeb;
+	-webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+	-moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+	box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+}
+
+/*
+****************************
+Главный контейнер-2
+****************************
+*/
+.main-conteiner {
+	background: rgba(200, 214, 204, 0.9); /* Цвет фона */
+    color: #000000; /* Цвет текста */
+    padding: 25px; /* Поля вокруг текста */
+	margin: 20px 20px 20px 20px;
+	padding: 20px 20px 20px 20px;
+	border: 0.2px solid #ebebeb;
+	-webkit-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+	-moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+	box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2);
+}
+/*
+****************************
+Колонки
+****************************
+*/
+
+
+/*
+****************************
+Адресс над картой
+****************************
+*/
+.location {
+	display: inline-block;
+	place-items: center;
+	margin: 20px;
+	padding: 5px 5px 5px 5px;
+	background:  rgba(255, 255, 255, 0.278);
+	border-radius: 7px;	
+	border: 0.5px solid #ffffffdb;
+	-webkit-box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2);
+	-moz-box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2);
+	box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2);
+}
+/*
+****************************
+Карта
+****************************
+*/
+.map {
+	height: 400px;
+	margin: 0px 200px 20px 200px;
+	padding: 0; /* Поля вокруг текста */
+	border: 0.2px solid #ebebeb;
+	-webkit-box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2);
+	-moz-box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2);
+	box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2);
+}
+
+/*
+****************************
+Копирайт
+****************************
+*/
+.copyright {
+	margin: 20px 20px 20px 20px;
+}
+
+/*
+****************************
+Кнопка НАВЕРХ
+****************************
+*/
+@media (hover: hover) and (pointer: fine) {
+	.btn-up:hover {
+		cursor: pointer; /* рука */
+		background-color: background-color: #ffffff5e; /* цвет заднего фона при наведении */
+	}
+}
