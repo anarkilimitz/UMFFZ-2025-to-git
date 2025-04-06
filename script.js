@@ -207,29 +207,29 @@ if (document.querySelector(".slider")) {
 	}
 }
 
-// ==================== Заставка видео ==============================
+// // ==================== Заставка видео ==============================
 
-const splashVideo = document.getElementById("splash-video");
-const splashScreen = document.getElementById("splash-screen");
-const mainContent = document.getElementById("main-content");
+// const splashVideo = document.getElementById("splash-video");
+// const splashScreen = document.getElementById("splash-screen");
+// const mainContent = document.getElementById("main-content");
 
-// Когда видео закончится, скрываем заставку и показываем контент
-splashVideo.addEventListener("ended", function () {
-	splashScreen.style.display = "none";
-	mainContent.style.display = "block";
-});
+// // Когда видео закончится, скрываем заставку и показываем контент
+// splashVideo.addEventListener("ended", function () {
+// 	splashScreen.style.display = "none";
+// 	mainContent.style.display = "block";
+// });
 
-// Если видео не загрузилось, всё равно скрываем заставку через 5 сек
-setTimeout(() => {
-	splashScreen.style.display = "none";
-	mainContent.style.display = "block";
-}, 1500); // Запасной вариант на случай ошибки
+// // Если видео не загрузилось, всё равно скрываем заставку через 5 сек
+// setTimeout(() => {
+// 	splashScreen.style.display = "none";
+// 	mainContent.style.display = "block";
+// }, 1500); // Запасной вариант на случай ошибки
 
-splashVideo.addEventListener("ended", function () {
-	splashScreen.style.opacity = "0";
-	setTimeout(() => {
-		splashScreen.style.display = "none";
-		mainContent.style.display = "block";
-	}, 500); // Даём время для завершения анимации
-});
+// splashVideo.addEventListener("ended", function () {
+// 	splashScreen.style.opacity = "0";
+// 	setTimeout(() => {
+// 		splashScreen.style.display = "none";
+// 		mainContent.style.display = "block";
+// 	}, 500); // Даём время для завершения анимации
+// });
 >>>>>>> 34b822a (first commit)
