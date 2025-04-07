@@ -232,4 +232,3 @@ if (document.querySelector(".slider")) {
 // 		mainContent.style.display = "block";
 // 	}, 500); // Даём время для завершения анимации
 // });
->>>>>>> 34b822a (first commit)
