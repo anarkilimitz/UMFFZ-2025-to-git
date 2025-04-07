@@ -137,28 +137,31 @@ if (document.querySelector(".slider")) {
   
   startAutoSlide();
 }
-
 // ==================== Заставка видео ====================
 const splashVideo = document.getElementById("splash-video");
 const splashScreen = document.getElementById("splash-screen");
 const mainContent = document.getElementById("main-content");
 
 if (splashVideo && splashScreen && mainContent) {
-  splashVideo.addEventListener("ended", function() {
+  // Плавное скрытие заставки
+  function hideSplash() {
+    splashScreen.style.transition = "opacity 0.5s ease";
     splashScreen.style.opacity = "0";
+    
     setTimeout(() => {
       splashScreen.style.display = "none";
+      document.body.style.overflow = "auto"; // Разблокируем скролл
       mainContent.style.display = "block";
     }, 500);
-  });
+  }
 
+  // По окончании видео
+  splashVideo.addEventListener("ended", hideSplash);
+
+  // Запасной таймаут (если видео не загрузилось)
   setTimeout(() => {
-    if (splashScreen.style.display !== "none") {
-      splashScreen.style.opacity = "0";
-      setTimeout(() => {
-        splashScreen.style.display = "none";
-        mainContent.style.display = "block";
-      }, 500);
+    if (splashScreen.style.opacity !== "0") {
+      hideSplash();
     }
   }, 5000);
 }
