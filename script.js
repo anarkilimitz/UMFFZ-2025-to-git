@@ -12,7 +12,6 @@ const btnUp = {
 	hide() {
 		this.el.classList.add("btn-up_hide");
 	},
-
 	// Инициализация событий
 	addEventListener() {
 		// Если кнопка не найдена - выходим
@@ -20,7 +19,6 @@ const btnUp = {
 			console.error("Кнопка .btn-up не найдена");
 			return;
 		}
-
 		// Следим за прокруткой страницы
 		window.addEventListener("scroll", () => {
 			const scrollY = window.scrollY || document.documentElement.scrollTop;
@@ -37,15 +35,11 @@ const btnUp = {
 		});
 	},
 };
-
-// Инициализируем кнопку (только если она есть на странице)
-if (document.querySelector(".btn-up")) {
-	btnUp.addEventListener();
+if (document.querySelector(".btn-up")) { 
+	btnUp.addEventListener(); // Инициализируем кнопку (только если она есть на странице)
 }
-
 // ==================== Календарь ====================
-// Проверяем, есть ли календарь на странице
-if (document.querySelector(".calendar-month")) {
+if (document.querySelector(".calendar-month")) { // Проверяем, есть ли календарь на странице
 	const now = new Date();
 	const month = now.toLocaleString("default", { month: "long" });
 	const weekday = now.toLocaleString("default", { weekday: "long" });
@@ -57,17 +51,12 @@ if (document.querySelector(".calendar-month")) {
 	document.querySelector(".calendar-day").textContent = day;
 	document.querySelector(".calendar-year").textContent = year;
 }
-
 // ==================== Слайдер ====================
 // Инициализация слайдера только если он есть на странице
-("use strict");
-
-<<<<<<< HEAD
 document.querySelector('.calendar-month').textContent = month;
 document.querySelector('.calendar-weekday').textContent = weekday;
 document.querySelector('.calendar-day').textContent = day;
 document.querySelector('.calendar-year').textContent = year;
-=======
 // ==================== Слайдер ====================
 if (document.querySelector(".slider")) {
 	const slides = document.querySelector(".slides");
@@ -123,7 +112,6 @@ if (document.querySelector(".slider")) {
 				dot.classList.toggle("active", i === currentSlide);
 			});
 		}
-
 		// Автопрокрутка слайдов
 		function startAutoSlide() {
 			clearInterval(autoSlideInterval);
@@ -133,12 +121,10 @@ if (document.querySelector(".slider")) {
 				}
 			}, 5000);
 		}
-
 		// Пауза автопрокрутки
 		function pauseAutoSlide() {
 			clearInterval(autoSlideInterval);
 		}
-
 		// Обработчики событий для кнопок
 		nextBtn.addEventListener("click", () => {
 			pauseAutoSlide();
@@ -170,9 +156,8 @@ if (document.querySelector(".slider")) {
 		document
 			.querySelector(".slider")
 			.addEventListener("mouseleave", startAutoSlide);
-
-		// Запускаем автопрокрутку
-		startAutoSlide();
+		
+		startAutoSlide(); // Запускаем автопрокрутку
 
 		// Микроанимации для интерактивных элементов
 		// dots.forEach(dot => {
