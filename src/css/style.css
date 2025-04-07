@@ -141,7 +141,7 @@ body {
 ****************************
 */
 body {
-	background-image: url(/src/img/background/creative-background-with-white-shapes.jpg);
+	background-image: url(/img/background/creative-background-with-white-shapes.jpg);
 	min-height: 100vh;
 	background-repeat: repeat;
 	background-attachment: fixed;
@@ -363,7 +363,7 @@ nav {
 Главный контейнер-2
 ****************************
 */
-.main-conteiner {
+.main-container {
 	display: block;
 	background: rgba(200, 214, 204, 0.9); /* Цвет фона */
 	color: #000000; /* Цвет текста */
