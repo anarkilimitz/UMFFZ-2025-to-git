@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-"use ctrict";
-// Кнопка НАВЕРХ
-=======
 "use strict";
->>>>>>> 34b822a (first commit)
-
 // ==================== Кнопка "НАВЕРХ" ====================
 const btnUp = {
 	el: document.querySelector(".btn-up"),
