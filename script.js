@@ -4,11 +4,11 @@ const btnUp = {
   el: document.querySelector(".btn-up"),
 
   show() {
-    this.el.classList.remove("btn-up_hide");
+    this.el.style.display = "block"; // или через класс
   },
 
   hide() {
-    this.el.classList.add("btn-up_hide");
+    this.el.style.display = "none";
   },
 
   addEventListener() {
@@ -22,7 +22,8 @@ const btnUp = {
       scrollY > 400 ? this.show() : this.hide();
     });
 
-    this.el.addEventListener("click", () => {
+    this.el.addEventListener("click", (e) => {
+      e.preventDefault();
       window.scrollTo({
         top: 0,
         left: 0,
@@ -32,7 +33,7 @@ const btnUp = {
   },
 };
 
-if (document.querySelector(".btn-up")) { 
+if (document.querySelector(".btn-up")) {
   btnUp.addEventListener();
 }
 
@@ -52,6 +53,7 @@ if (document.querySelector(".calendar-month")) {
 
 // ==================== Слайдер ====================
 if (document.querySelector(".slider")) {
+  const slider = document.querySelector(".slider");
   const slides = document.querySelector(".slides");
   const slideItems = document.querySelectorAll(".slide");
   const prevBtn = document.querySelector(".prev");
@@ -59,81 +61,36 @@ if (document.querySelector(".slider")) {
   const dots = document.querySelectorAll(".dot");
 
   if (!slides || !slideItems.length || !prevBtn || !nextBtn || !dots.length) {
-    console.error("Не найдены все элементы слайдера");
+    console.error("Ошибка: Не все элементы слайдера найдены");
     return;
   }
 
   let currentSlide = 0;
-  let autoSlideInterval;
-  let isAnimating = false;
+  const totalSlides = slideItems.length;
 
-  slides.style.transition = "transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
-  slideItems[currentSlide].classList.add("active");
-  updateDots();
-
-  function goToSlide(index) {
-    if (isAnimating) return;
-    isAnimating = true;
-
-    slideItems[currentSlide].classList.remove("active");
-
-    if (index >= slideItems.length) index = 0;
-    else if (index < 0) index = slideItems.length - 1;
-    currentSlide = index;
-
+  function updateSlider() {
     slides.style.transform = `translateX(-${currentSlide * 100}%)`;
-
-    setTimeout(() => {
-      slideItems[currentSlide].classList.add("active");
-      isAnimating = false;
-    }, 600);
-
-    updateDots();
-  }
-
-  function updateDots() {
     dots.forEach((dot, i) => {
       dot.classList.toggle("active", i === currentSlide);
     });
   }
 
-  function startAutoSlide() {
-    clearInterval(autoSlideInterval);
-    autoSlideInterval = setInterval(() => {
-      if (!isAnimating) {
-        goToSlide(currentSlide + 1);
-      }
-    }, 5000);
-  }
-
-  function pauseAutoSlide() {
-    clearInterval(autoSlideInterval);
-  }
-
   nextBtn.addEventListener("click", () => {
-    pauseAutoSlide();
-    goToSlide(currentSlide + 1);
-    startAutoSlide();
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateSlider();
   });
 
   prevBtn.addEventListener("click", () => {
-    pauseAutoSlide();
-    goToSlide(currentSlide - 1);
-    startAutoSlide();
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    updateSlider();
   });
 
-  dots.forEach((dot, index) => {
+  dots.forEach((dot, i) => {
     dot.addEventListener("click", () => {
-      if (currentSlide !== index) {
-        pauseAutoSlide();
-        goToSlide(index);
-        startAutoSlide();
-      }
+      currentSlide = i;
+      updateSlider();
     });
   });
 
-  document.querySelector(".slider").addEventListener("mouseenter", pauseAutoSlide);
-  document.querySelector(".slider").addEventListener("mouseleave", startAutoSlide);
-  
-  startAutoSlide();
+  updateSlider(); // Инициализация
 }
