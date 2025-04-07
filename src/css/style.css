@@ -149,6 +149,11 @@ body {
 	background-size: cover;
 }
 /* ----------------- Заставка видео ----------------------- */
+#main-content {
+  display: none; /* Изначально скрыт */
+  opacity: 1; /* Будет показан после заставки */
+}
+
 #splash-screen {
 	position: fixed;
 	top: 0;
