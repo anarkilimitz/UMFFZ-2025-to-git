@@ -386,7 +386,7 @@ nav {
 Адресс над картой
 ****************************
 */
-.location {
+.container__header-title {
 	display: block;
 	text-align: center;
 	margin: 20px;
