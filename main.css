@@ -2,40 +2,121 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
 	margin: 0;
 	padding: 0;
 	border: 0;
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
 	display: block;
 }
 body {
 	line-height: 1;
 }
-ol, ul {
+ol,
+ul {
 	list-style: none;
 }
-blockquote, q {
+blockquote,
+q {
 	quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
 	content: '';
 	content: none;
 }
@@ -51,7 +132,7 @@ table {
 @import url('https://fonts.googleapis.com/css2?family=Arima:wght@100..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 body {
-	font-family: "Arima", system-ui;
+	font-family: 'Arima', system-ui;
 	font-weight: lighter;
 }
 /*
@@ -87,9 +168,9 @@ h2 {
 
 .main-logo {
 	margin: 0px 20px 20px 20px;
-	padding: 20px ;
-	background:  rgba(0, 0, 0, 0.592);
-	border-radius: 7px;	
+	padding: 20px;
+	background: rgba(0, 0, 0, 0.592);
+	border-radius: 7px;
 	border: 0.5px solid #ffffff;
 	-webkit-box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2);
 	-moz-box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2);
@@ -107,11 +188,11 @@ h2 {
 	border: 0.2px solid #ebebeb;
 	padding: 10px;
 	list-style-type: none;
-	border-radius: 7px;	
+	border-radius: 7px;
 	text-align: center;
-	background:  rgba(0, 0, 0, 0.592);
+	background: rgba(0, 0, 0, 0.592);
 }
-#nav li { 
+#nav li {
 	display: inline;
 }
 #nav a {
@@ -120,7 +201,6 @@ h2 {
 	text-decoration: none;
 	font-weight: 400;
 	display: inline;
-
 }
 #nav a:hover {
 	border-radius: 1px;
@@ -139,10 +219,10 @@ nav {
 */
 .calendar {
 	width: 110px;
-    height: 200px;
+	height: 200px;
 	margin: 0px 20px 20px 20px;
-	background:  rgba(0, 0, 0, 0.592);
-	border-radius: 8px;	
+	background: rgba(0, 0, 0, 0.592);
+	border-radius: 8px;
 	min-width: 10rem;
 	line-height: 1;
 	text-align: center;
@@ -181,8 +261,8 @@ nav {
 }
 
 .calendar-day {
-font-weight: bold;
-font-size: 4rem;
+	font-weight: bold;
+	font-size: 4rem;
 }
 
 .calendar-year {
@@ -197,8 +277,8 @@ font-size: 4rem;
 */
 .children {
 	background: rgba(200, 214, 204, 0.9); /* Цвет фона */
-    color: #000000; /* Цвет текста */
-    padding: 25px; /* Поля вокруг текста */
+	color: #000000; /* Цвет текста */
+	padding: 25px; /* Поля вокруг текста */
 	margin: 20px 20px 20px 20px;
 	padding: 20px 20px 20px 20px;
 	border: 0.2px solid #ebebeb;
@@ -214,8 +294,8 @@ font-size: 4rem;
 */
 .main-conteiner {
 	background: rgba(200, 214, 204, 0.9); /* Цвет фона */
-    color: #000000; /* Цвет текста */
-    padding: 25px; /* Поля вокруг текста */
+	color: #000000; /* Цвет текста */
+	padding: 25px; /* Поля вокруг текста */
 	margin: 20px 20px 20px 20px;
 	padding: 20px 20px 20px 20px;
 	border: 0.2px solid #ebebeb;
@@ -229,7 +309,6 @@ font-size: 4rem;
 ****************************
 */
 
-
 /*
 ****************************
 Адресс над картой
@@ -240,8 +319,8 @@ font-size: 4rem;
 	place-items: center;
 	margin: 20px;
 	padding: 5px 5px 5px 5px;
-	background:  rgba(255, 255, 255, 0.278);
-	border-radius: 7px;	
+	background: rgba(255, 255, 255, 0.278);
+	border-radius: 7px;
 	border: 0.5px solid #ffffffdb;
 	-webkit-box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2);
 	-moz-box-shadow: 0px 0px 10px 2px rgba(34, 60, 80, 0.2);
@@ -276,9 +355,7 @@ font-size: 4rem;
 Кнопка НАВЕРХ
 ****************************
 */
-@media (hover: hover) and (pointer: fine) {
-	.btn-up:hover {
-		cursor: pointer; /* рука */
-		background-color: background-color: #ffffff5e; /* цвет заднего фона при наведении */
-	}
+.btn-up:hover {
+	cursor: pointer;
+	background-color: #ffffff5e;
 }
