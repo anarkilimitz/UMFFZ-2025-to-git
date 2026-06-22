@@ -1,235 +1,123 @@
-<<<<<<< HEAD
-"use ctrict";
-// Кнопка НАВЕРХ
-=======
 "use strict";
->>>>>>> 34b822a (first commit)
 
-// ==================== Кнопка "НАВЕРХ" ====================
-const btnUp = {
-	el: document.querySelector(".btn-up"),
+document.addEventListener("DOMContentLoaded", () => {
+	const backToTopLinks = document.querySelectorAll(".btn-up");
 
-	// Показываем кнопку
-	show() {
-		this.el.classList.remove("btn-up_hide");
-	},
-
-	// Скрываем кнопку
-	hide() {
-		this.el.classList.add("btn-up_hide");
-	},
-
-	// Инициализация событий
-	addEventListener() {
-		// Если кнопка не найдена - выходим
-		if (!this.el) {
-			console.error("Кнопка .btn-up не найдена");
-			return;
-		}
-
-		// Следим за прокруткой страницы
-		window.addEventListener("scroll", () => {
+	if (backToTopLinks.length > 0) {
+		const updateBackToTopVisibility = () => {
 			const scrollY = window.scrollY || document.documentElement.scrollTop;
-			scrollY > 400 ? this.show() : this.hide();
-		});
+			const shouldShow = scrollY > 400;
 
-		// Клик по кнопке - плавный скролл наверх
-		this.el.addEventListener("click", () => {
-			window.scrollTo({
-				top: 0,
-				left: 0,
-				behavior: "smooth",
+			backToTopLinks.forEach((item) => {
+				item.classList.toggle("btn-up_hide", !shouldShow);
+			});
+		};
+
+		backToTopLinks.forEach((item) => {
+			item.addEventListener("click", (event) => {
+				event.preventDefault();
+				window.scrollTo({
+					top: 0,
+					left: 0,
+					behavior: "smooth",
+				});
 			});
 		});
-	},
-};
 
-// Инициализируем кнопку (только если она есть на странице)
-if (document.querySelector(".btn-up")) {
-	btnUp.addEventListener();
-}
+		updateBackToTopVisibility();
+		window.addEventListener("scroll", updateBackToTopVisibility, { passive: true });
+	}
 
-// ==================== Календарь ====================
-// Проверяем, есть ли календарь на странице
-if (document.querySelector(".calendar-month")) {
-	const now = new Date();
-	const month = now.toLocaleString("default", { month: "long" });
-	const weekday = now.toLocaleString("default", { weekday: "long" });
-	const day = now.toLocaleString("default", { day: "2-digit" });
-	const year = now.toLocaleString("default", { year: "numeric" });
+	const calendarMonth = document.querySelector(".calendar-month");
+	const calendarWeekday = document.querySelector(".calendar-weekday");
+	const calendarDay = document.querySelector(".calendar-day");
+	const calendarYear = document.querySelector(".calendar-year");
 
-	document.querySelector(".calendar-month").textContent = month;
-	document.querySelector(".calendar-weekday").textContent = weekday;
-	document.querySelector(".calendar-day").textContent = day;
-	document.querySelector(".calendar-year").textContent = year;
-}
+	if (calendarMonth && calendarWeekday && calendarDay && calendarYear) {
+		const now = new Date();
+		const locale = "ru-RU";
 
-// ==================== Слайдер ====================
-// Инициализация слайдера только если он есть на странице
-("use strict");
+		calendarMonth.textContent = now.toLocaleString(locale, { month: "long" });
+		calendarWeekday.textContent = now.toLocaleString(locale, { weekday: "long" });
+		calendarDay.textContent = now.toLocaleString(locale, { day: "2-digit" });
+		calendarYear.textContent = now.toLocaleString(locale, { year: "numeric" });
+	}
 
-<<<<<<< HEAD
-document.querySelector('.calendar-month').textContent = month;
-document.querySelector('.calendar-weekday').textContent = weekday;
-document.querySelector('.calendar-day').textContent = day;
-document.querySelector('.calendar-year').textContent = year;
-=======
-// ==================== Слайдер ====================
-if (document.querySelector(".slider")) {
-	const slides = document.querySelector(".slides");
-	const slideItems = document.querySelectorAll(".slide");
-	const prevBtn = document.querySelector(".prev");
-	const nextBtn = document.querySelector(".next");
-	const dots = document.querySelectorAll(".dot");
+	const slider = document.querySelector(".slider");
 
-	// Проверка, что все элементы существуют
-	if (!slides || !slideItems.length || !prevBtn || !nextBtn || !dots.length) {
-		console.error("Не найдены все элементы слайдера");
-	} else {
-		let currentSlide = 0;
-		let autoSlideInterval;
-		let isAnimating = false;
+	if (slider) {
+		const slides = slider.querySelector(".slides");
+		const slideItems = Array.from(slider.querySelectorAll(".slide"));
+		const prevBtn = slider.querySelector(".prev");
+		const nextBtn = slider.querySelector(".next");
+		const dots = Array.from(slider.querySelectorAll(".dot"));
 
-		// Настройка CSS-переходов
-		slides.style.transition =
-			"transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)";
+		if (slides && slideItems.length > 0 && prevBtn && nextBtn && dots.length > 0) {
+			let currentSlide = 0;
+			let autoSlideTimer = null;
 
-		// Инициализация первого слайда
-		slideItems[currentSlide].classList.add("active");
-		updateDots();
+			const renderSlide = () => {
+				slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+				dots.forEach((dot, index) => {
+					dot.classList.toggle("active", index === currentSlide);
+				});
+			};
 
-		// Основная функция перехода
-		function goToSlide(index) {
-			if (isAnimating) return;
-			isAnimating = true;
+			const goToSlide = (index) => {
+				currentSlide = (index + slideItems.length) % slideItems.length;
+				renderSlide();
+			};
 
-			// Удаляем класс active у текущего слайда
-			slideItems[currentSlide].classList.remove("active");
-
-			// Определяем новый индекс слайда
-			if (index >= slideItems.length) index = 0;
-			else if (index < 0) index = slideItems.length - 1;
-			currentSlide = index;
-
-			// Анимация перехода
-			slides.style.transform = `translateX(-${currentSlide * 100}%)`;
-
-			// Добавляем класс active новому слайду после завершения анимации
-			setTimeout(() => {
-				slideItems[currentSlide].classList.add("active");
-				isAnimating = false;
-			}, 600);
-
-			updateDots();
-		}
-
-		// Обновление индикаторных точек
-		function updateDots() {
-			dots.forEach((dot, i) => {
-				dot.classList.toggle("active", i === currentSlide);
-			});
-		}
-
-		// Автопрокрутка слайдов
-		function startAutoSlide() {
-			clearInterval(autoSlideInterval);
-			autoSlideInterval = setInterval(() => {
-				if (!isAnimating) {
-					goToSlide(currentSlide + 1);
+			function stopAutoSlide() {
+				if (autoSlideTimer !== null) {
+					window.clearInterval(autoSlideTimer);
+					autoSlideTimer = null;
 				}
-			}, 5000);
-		}
+			}
 
-		// Пауза автопрокрутки
-		function pauseAutoSlide() {
-			clearInterval(autoSlideInterval);
-		}
+			function startAutoSlide() {
+				stopAutoSlide();
+				autoSlideTimer = window.setInterval(() => {
+					goToSlide(currentSlide + 1);
+				}, 5000);
+			}
 
-		// Обработчики событий для кнопок
-		nextBtn.addEventListener("click", () => {
-			pauseAutoSlide();
-			goToSlide(currentSlide + 1);
-			startAutoSlide();
-		});
+			prevBtn.addEventListener("click", () => {
+				goToSlide(currentSlide - 1);
+				startAutoSlide();
+			});
 
-		prevBtn.addEventListener("click", () => {
-			pauseAutoSlide();
-			goToSlide(currentSlide - 1);
-			startAutoSlide();
-		});
+			nextBtn.addEventListener("click", () => {
+				goToSlide(currentSlide + 1);
+				startAutoSlide();
+			});
 
-		// Обработчики для точек
-		dots.forEach((dot, index) => {
-			dot.addEventListener("click", () => {
-				if (currentSlide !== index) {
-					pauseAutoSlide();
+			dots.forEach((dot, index) => {
+				dot.addEventListener("click", () => {
 					goToSlide(index);
 					startAutoSlide();
-				}
+				});
 			});
-		});
 
-		// Пауза при наведении
-		document
-			.querySelector(".slider")
-			.addEventListener("mouseenter", pauseAutoSlide);
-		document
-			.querySelector(".slider")
-			.addEventListener("mouseleave", startAutoSlide);
+			slider.addEventListener("mouseenter", stopAutoSlide);
+			slider.addEventListener("mouseleave", startAutoSlide);
 
-		// Запускаем автопрокрутку
-		startAutoSlide();
-
-		// Микроанимации для интерактивных элементов
-		// dots.forEach(dot => {
-		//     dot.style.transition = "all 0.3s ease";
-		//     dot.addEventListener("mouseover", () => {
-		//         if (!dot.classList.contains("active")) {
-		//             dot.style.transform = "scale(1.3)";
-		//         }
-		//     });
-		//     dot.addEventListener("mouseout", () => {
-		//         if (!dot.classList.contains("active")) {
-		//             dot.style.transform = "scale(1)";
-		//         }
-		//     });
-		// });
-
-		// [prevBtn, nextBtn].forEach(btn => {
-		//     btn.style.transition = "transform 0.3s ease";
-		//     btn.addEventListener("mouseover", () => {
-		//         btn.style.transform = "scale(1.2)";
-		//     });
-		//     btn.addEventListener("mouseout", () => {
-		//         btn.style.transform = "scale(1)";
-		//     });
-		// });
+			renderSlide();
+			startAutoSlide();
+		}
 	}
-}
 
-// ==================== Заставка видео ==============================
+	const splashScreen = document.getElementById("splash-screen");
 
-const splashVideo = document.getElementById("splash-video");
-const splashScreen = document.getElementById("splash-screen");
-const mainContent = document.getElementById("main-content");
+	if (splashScreen) {
+		const removeSplash = () => splashScreen.remove();
+		const splashVideo = document.getElementById("splash-video");
 
-// Когда видео закончится, скрываем заставку и показываем контент
-splashVideo.addEventListener("ended", function () {
-	splashScreen.style.display = "none";
-	mainContent.style.display = "block";
+		if (splashVideo) {
+			splashVideo.addEventListener("ended", removeSplash, { once: true });
+			splashVideo.addEventListener("error", removeSplash, { once: true });
+		}
+
+		window.setTimeout(removeSplash, 1500);
+	}
 });
-
-// Если видео не загрузилось, всё равно скрываем заставку через 5 сек
-setTimeout(() => {
-	splashScreen.style.display = "none";
-	mainContent.style.display = "block";
-}, 1500); // Запасной вариант на случай ошибки
-
-splashVideo.addEventListener("ended", function () {
-	splashScreen.style.opacity = "0";
-	setTimeout(() => {
-		splashScreen.style.display = "none";
-		mainContent.style.display = "block";
-	}, 500); // Даём время для завершения анимации
-});
->>>>>>> 34b822a (first commit)

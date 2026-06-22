@@ -202,7 +202,8 @@ h2 {
 ****************************
 */
 
-#nav {
+#nav,
+#nav-bottom {
 	margin: 0px 20px 30px 20px;
 	border: 0.2px solid #ebebeb;
 	padding: 10px;
@@ -211,17 +212,20 @@ h2 {
 	text-align: center;
 	background: rgba(0, 0, 0, 0.592);
 }
-#nav li {
+#nav li,
+#nav-bottom li {
 	display: inline;
 }
-#nav a {
+#nav a,
+#nav-bottom a {
 	color: #fff;
 	padding: 5px 10px;
 	text-decoration: none;
 	font-weight: 400;
 	display: inline;
 }
-#nav a:hover {
+#nav a:hover,
+#nav-bottom a:hover {
 	border-radius: 1px;
 	background-color: #ffffff5e;
 }
@@ -432,6 +436,10 @@ nav {
 		cursor: pointer; /* рука */
 		background-color: #ffffff5e; /* цвет заднего фона при наведении */
 	}
+}
+
+.btn-up_hide {
+	display: none;
 }
 
 /*
